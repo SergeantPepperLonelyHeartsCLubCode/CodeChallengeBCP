@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,7 +13,6 @@ import de.bcxp.challenge.weather.WeatherService;
 
 public class CsvReader implements InputFileReaderInterface {
 
-    private static final String COMMA_DELIMITER = ";";
     private static final String RELATIVEPATH = "src/main/resources/de/bcxp/challenge/";
 
     WeatherService weatherService = new WeatherService();
@@ -60,7 +58,6 @@ public class CsvReader implements InputFileReaderInterface {
                     break;
             }
         }
-
         return result;
     }
 

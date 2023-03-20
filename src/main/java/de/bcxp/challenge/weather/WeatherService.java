@@ -21,7 +21,7 @@ public class WeatherService implements WeatherInterface {
                 if (isInteger(fields[2]) && isInteger(fields[1])) {
                     int maxTemp = Integer.parseInt(fields[1]);
                     int minTemp = Integer.parseInt(fields[2]);
-
+                    
                     if (maxTemp > minTemp) {
                         difference = maxTemp - minTemp;
                     }

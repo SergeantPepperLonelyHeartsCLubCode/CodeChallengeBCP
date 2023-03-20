@@ -16,7 +16,6 @@ public class CountryService implements CountryInterface {
             String[] fields = line.split(COUNTRY_SEPERATOR);
 
             if (fields.length > 3) {
-
                 String populationString = correctInputStringMistakes(fields[3]);
 
                 if (isInteger(populationString) && isInteger(fields[4])) {
