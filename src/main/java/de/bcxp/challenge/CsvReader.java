@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
-public class CsvReader {
+public class CsvReader implements InputFileReaderInterface {
     
 
     private static final String COMMA_DELIMITER = ";";
@@ -22,6 +22,7 @@ public class CsvReader {
     WeatherService weatherService = new WeatherService();
     CountryService countryService = new CountryService();
 
+    //Reads in table from CSV File and converts it to List with the entries
     public List<String> readFile(String fileName) throws IOException {
     List<String> records = new ArrayList<>();
     try (
@@ -43,6 +44,7 @@ public String interpretFile(List<String> fileContent, FileType fileType) {
 
     FileType type = fileType;
     String result = null;
+    //Switch case for different functions
     switch (type) {
         case WEATHER:
             fileContent.remove(0);

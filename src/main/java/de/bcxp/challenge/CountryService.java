@@ -15,8 +15,6 @@ class CountryService implements CountryInterface  {
         
         for (String line : countries) {
             String[] fields = line.split(COUNTRY_SEPERATOR);
-            System.out.println(fields[0]);
-            System.out.println("Fields length " + fields.length);
             int population = Integer.parseInt(correctInputStringMistakes(fields[3]));
             int area = Integer.parseInt(fields[4]);
             int density = population / area;
@@ -28,7 +26,6 @@ class CountryService implements CountryInterface  {
         }
 
         if (countryWithHighestDensity != null) {
-            System.out.println(countryWithHighestDensity);
             return countryWithHighestDensity;
         } else {
             System.out.println("No data found.");
@@ -36,8 +33,9 @@ class CountryService implements CountryInterface  {
         }
     }
 
+ //Helper method that corrects invalid entries
  private String correctInputStringMistakes(String populationString){
-    //Removing everything after an comma
+    //Removing everything after a comma
     int index = populationString.indexOf(",");
     if (index != -1) {
         populationString = populationString.substring(0, index);

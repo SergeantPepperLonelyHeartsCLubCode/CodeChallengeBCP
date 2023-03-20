@@ -15,8 +15,6 @@ import java.util.List;
  * Example JUnit 5 test case.
  */
 class AppTest {
-
-    private String successLabel = "not successful";
     CsvReader csvReader;
     List<String> fileContent;
 
@@ -25,25 +23,31 @@ class AppTest {
         csvReader = new CsvReader();
         fileContent = new ArrayList<>();
     }
-/*  
+
     @Test
-    void weatherTest() throws IOException {
-        fileContent = csvReader.readFile("weather2.csv");
+    void weatherTestSuccess() throws IOException {
+        fileContent = csvReader.readFile("weatherTest.csv");
         String result = csvReader.interpretFile(fileContent, FileType.WEATHER);
         assertEquals(result, "2", "My expectations were not met");
     }
-    */
+
+    @Test
+    void weatherTestFail() throws IOException {
+        fileContent = csvReader.readFile("weatherTest.csv");
+        String result = csvReader.interpretFile(fileContent, FileType.WEATHER);
+        assertNotEquals(result, "1", "My expectations were not met");
+    }
 
     @Test
     void countriesTestSuccess() throws IOException {
-        fileContent = csvReader.readFile("countries2.csv");
+        fileContent = csvReader.readFile("countriesTest.csv");
         String result = csvReader.interpretFile(fileContent, FileType.COUNTRIES);
         assertEquals(result, "Wakanda", "My expectations were not met");
     }
 
     @Test
     void countriesTestWrongAnswer() throws IOException {
-        fileContent = csvReader.readFile("countries2.csv");
+        fileContent = csvReader.readFile("countriesTest.csv");
         String result = csvReader.interpretFile(fileContent, FileType.COUNTRIES);
         assertNotEquals(result, "USA", "My expectations were not met");
     }
