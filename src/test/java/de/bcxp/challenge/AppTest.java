@@ -3,6 +3,9 @@ package de.bcxp.challenge;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import de.bcxp.challenge.input.CsvReader;
+import de.bcxp.challenge.input.FileType;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -30,6 +33,21 @@ class AppTest {
         String result = csvReader.interpretFile(fileContent, FileType.WEATHER);
         assertEquals(result, "2", "My expectations were not met");
     }
+
+    @Test
+    void weatherTestWrongFileType() throws IOException {
+        fileContent = csvReader.readFile("weatherTest.csv");
+        String result = csvReader.interpretFile(fileContent, FileType.COUNTRIES);
+        assertEquals(result, null, "My expectations were not met");
+    }
+
+    @Test
+    void wrongFileName() throws IOException {
+        fileContent = csvReader.readFile("weatherTest.cc");
+        String result = csvReader.interpretFile(fileContent, FileType.COUNTRIES);
+        assertEquals(result, null, "My expectations were not met");
+    }
+
 
     @Test
     void weatherTestFail() throws IOException {
